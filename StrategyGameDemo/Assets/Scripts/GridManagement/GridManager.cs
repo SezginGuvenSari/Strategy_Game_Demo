@@ -43,11 +43,12 @@ public class GridManager : MonoBehaviour
                 tile.name = $"Tile {x}_{y}";
 
                 SetTileInDictionary(posX, posY, tile);
-
                 SetTileColor(x, y, tile);
             }
         }
         SetCameraPosition();
+        SetCamSize();
+      
     }
 
     private void SetTileInDictionary(float posX, float posY, TileController tile)
@@ -66,6 +67,8 @@ public class GridManager : MonoBehaviour
         _cam.position = new Vector3((float)(_width * TileSize) / 2 - TileSize / 2,
             (float)(_height * TileSize) / 2 - TileSize / 2, -10f);
     }
+
+    private void SetCamSize() => _cam.GetComponent<Camera>().orthographicSize =(_width * TileSize) /2;
 
 
     public TileController GetTileWithPosition(Vector2 pos)

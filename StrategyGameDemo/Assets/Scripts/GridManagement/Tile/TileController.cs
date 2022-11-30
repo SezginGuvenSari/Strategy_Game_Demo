@@ -28,7 +28,7 @@ public class TileController : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
 
@@ -38,5 +38,5 @@ public class TileController : MonoBehaviour
 
     private void IsActiveHighlight(bool on) => _tileData.HighLight.SetActive(on);
 
-
+  
 }
