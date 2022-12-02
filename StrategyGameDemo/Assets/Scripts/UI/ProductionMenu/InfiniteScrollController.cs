@@ -85,7 +85,7 @@ public class InfiniteScrollController : MonoBehaviour , IBeginDragHandler, IDrag
         {
             return;
         }
-
+      
         int endItemIndex = _positiveDrag ? 0 : _scrollRect.content.childCount - 1;
         Transform endItem = _scrollRect.content.GetChild(endItemIndex);
         Vector2 newPos = endItem.position;
@@ -98,6 +98,7 @@ public class InfiniteScrollController : MonoBehaviour , IBeginDragHandler, IDrag
         {
             newPos.y = endItem.position.y + _scrollContent.ChildHeight * 1.5f - _scrollContent.ItemSpacing;
         }
+       
         currItem.position = newPos;
         currItem.SetSiblingIndex(endItemIndex);
     }

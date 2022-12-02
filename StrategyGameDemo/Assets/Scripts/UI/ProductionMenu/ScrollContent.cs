@@ -38,6 +38,8 @@ public class ScrollContent : MonoBehaviour
 
     [SerializeField] private AnimationCurve _resizeRatio;
 
+    [SerializeField] private int _contentSize;
+
     #endregion
 
 
@@ -67,6 +69,7 @@ public class ScrollContent : MonoBehaviour
 
     private void Start()
     {
+        EnableContentObjects();
         InitializeScrollContent();
         VisibleAreaWidthCalculator();
         if (_vertical)
@@ -94,8 +97,6 @@ public class ScrollContent : MonoBehaviour
         _horizontal = !_vertical;
     }
 
-
-
     private void CalculateContentPos()
     {
         float originY = 0 - (_height * 0.5f);
@@ -110,15 +111,23 @@ public class ScrollContent : MonoBehaviour
 
     public void ResizeObjects()
     {
-        float offSet;
         foreach (var t in _rtChildren)
         {
-            float distance = Vector3.Distance(_resizeCenter, t.position);
+            var distance = Vector3.Distance(_resizeCenter, t.position);
             distance = Mathf.Abs(distance);
-            offSet = distance / _areaWidth;
+            var offSet = distance / _areaWidth;
             t.localScale = Vector3.one * _resizeRatio.Evaluate(offSet);
         }
     }
 
     private void VisibleAreaWidthCalculator() => _areaWidth = _rectTransform.rect.height;
+
+    private void EnableContentObjects()
+    {
+        for (var i = 0; i < _contentSize; i++)
+        {
+            GameEvents.GetObjectsInPoolMethod(ObjectTypes.BarrackUi);
+            GameEvents.GetObjectsInPoolMethod(ObjectTypes.PowerPlantUi);
+        }
+    }
 }
