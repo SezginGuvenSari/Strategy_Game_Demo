@@ -26,6 +26,20 @@ public class GridManager : MonoBehaviour
 
     #endregion
 
+    #region OnEnable & OnDisable
+    private void OnEnable()
+    {
+        GameEvents.OnGetTileInDictionary += GetTileWithPosition;
+        GameEvents.OnGetTileWidthPosition += GetTileWidthPosition;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnGetTileInDictionary -= GetTileWithPosition;
+        GameEvents.OnGetTileWidthPosition -= GetTileWidthPosition;
+    }
+
+    #endregion
 
     private void Start() => GenerateGrid();
 
@@ -48,7 +62,6 @@ public class GridManager : MonoBehaviour
         }
         SetCameraPosition();
         SetCamSize();
-      
     }
 
     private void SetTileInDictionary(float posX, float posY, TileController tile)
@@ -68,16 +81,13 @@ public class GridManager : MonoBehaviour
             (float)(_height * TileSize) / 2 - TileSize / 2, -10f);
     }
 
-    private void SetCamSize() => _cam.GetComponent<Camera>().orthographicSize =(_width * TileSize) /2;
+    private void SetCamSize() => _cam.GetComponent<Camera>().orthographicSize = (_width * TileSize) / 2;
 
 
-    public TileController GetTileWithPosition(Vector2 pos)
+    public TileController GetTileWithPosition(Vector2 pos) => _tiles.TryGetValue(pos, out var tile) ? tile : null;
+
+    public float GetTileWidthPosition()
     {
-        if (_tiles.TryGetValue(pos, out var tile))
-        {
-            return tile;
-        }
-        return null;
+        return (_width - 1) * TileSize;
     }
-
 }

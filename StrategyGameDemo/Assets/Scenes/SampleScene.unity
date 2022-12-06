@@ -270,7 +270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1244.7999, y: 0}
+  m_AnchoredPosition: {x: -1244.7998, y: 0}
   m_SizeDelta: {x: -2489.6, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144891084
@@ -617,11 +617,19 @@ MonoBehaviour:
     PoolSize: 5
     ObjectTypes: 1
   - Pool: []
-    ObjectPrefab: {fileID: 5814369932001269707, guid: aba9edcf10f20aa4e80df2b3d0d188bd, type: 3}
-    PoolSize: 5
+    ObjectPrefab: {fileID: 607360830817920002, guid: 1ccb959f30e67884c85043ddd97515f7, type: 3}
+    PoolSize: 10
     ObjectTypes: 2
+  - Pool: []
+    ObjectPrefab: {fileID: 3831089129789394507, guid: bf488ce789122524a984449bc3e8266b, type: 3}
+    PoolSize: 10
+    ObjectTypes: 3
+  - Pool: []
+    ObjectPrefab: {fileID: 2621885996886856155, guid: af55e390a84393145bc88cb7df4406f1, type: 3}
+    PoolSize: 10
+    ObjectTypes: 4
   _uiTransform: {fileID: 224623050944341984}
-  _objectTransform: {fileID: 0}
+  _objectTransform: {fileID: 683617480}
 --- !u!4 &683617480
 Transform:
   m_ObjectHideFlags: 0
@@ -1226,8 +1234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dc3fe47100a1b4cb371fe4581f12ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 18
-  _height: 18
+  _width: 17
+  _height: 17
   _tilePrefab: {fileID: 5983436259964751733, guid: 08a4384af682a1140ab9b965be8775e2, type: 3}
   _cam: {fileID: 519420032}
   _tilesParent: {fileID: 27646562}
