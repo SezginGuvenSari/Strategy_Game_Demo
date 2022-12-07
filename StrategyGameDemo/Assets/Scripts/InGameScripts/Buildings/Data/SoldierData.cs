@@ -16,5 +16,5 @@ public class SoldierData : BuildingData
 
     #endregion
 
-  
+
 }

@@ -35,9 +35,7 @@ public class BarrackController : BuildingLocator
     
     void Update()
     {
-        base.PlacementProcess(_barrackData.StartPosition,_barrackData);
-       
+        base.PlacementProcess(_barrackData.StartPosition, _barrackData);
     }
-
 
 }

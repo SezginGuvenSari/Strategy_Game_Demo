@@ -19,6 +19,11 @@ public abstract class BuildingData : MonoBehaviour
 
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
+    [SerializeField] private Vector2 _size;
+
+    [SerializeField] private List<TileController> _currentTiles;
+
+
     #endregion
 
     #region Properties
@@ -52,8 +57,21 @@ public abstract class BuildingData : MonoBehaviour
         set => _spriteRenderer = value;
     }
 
+    public Vector2 Size
+    {
+        get => _size;
+        set => _size = value;
+    }
+
+    public List<TileController> CurrentTiles
+    {
+        get => _currentTiles;
+        set => _currentTiles = value;
+    }
+
 
     #endregion
 
     private void Start() => _startPosition = transform.position;
+
 }

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 607360830817920015}
   - component: {fileID: 607360830817920000}
-  - component: {fileID: 3524783867892958868}
   - component: {fileID: 3294900673945867674}
   - component: {fileID: 6438877423470834643}
+  - component: {fileID: 5793036105031375148}
+  - component: {fileID: 1134353510327075745}
   m_Layer: 0
   m_Name: Barrack
   m_TagString: Untagged
@@ -87,19 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &3524783867892958868
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607360830817920002}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.28, y: 1.28, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3294900673945867674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +105,7 @@ MonoBehaviour:
   _isBuild: 0
   _startPosition: {x: 0, y: 0, z: 0}
   _spriteRenderer: {fileID: 607360830817920000}
+  _size: {x: 4, y: 4}
   _productionName: Soldier
   _productionImage: {fileID: 21300000, guid: 14235127b80712645a6df3ba7a380640, type: 3}
 --- !u!114 &6438877423470834643
@@ -131,3 +120,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67cedfa667cb70a40959094e3aa3a941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5793036105031375148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607360830817920002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dbae262722df340bd38a34e35d16e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1134353510327075745
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607360830817920002}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.28, y: 1.28}
+  m_EdgeRadius: 0

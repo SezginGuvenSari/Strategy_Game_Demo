@@ -28,14 +28,12 @@ public class PowerPlantController : BuildingLocator
     void Start()
     {
         base.Initialize();
-     
     }
 
 
     void Update()
     {
-        base.PlacementProcess(_powerPlantData.StartPosition,_powerPlantData);
-       
+        base.PlacementProcess(_powerPlantData.StartPosition, _powerPlantData);
     }
 
     

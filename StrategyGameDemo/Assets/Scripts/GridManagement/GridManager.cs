@@ -31,12 +31,14 @@ public class GridManager : MonoBehaviour
     {
         GameEvents.OnGetTileInDictionary += GetTileWithPosition;
         GameEvents.OnGetTileWidthPosition += GetTileWidthPosition;
+        GameEvents.OnGetDictionary += GetDictionary;
     }
 
     private void OnDisable()
     {
         GameEvents.OnGetTileInDictionary -= GetTileWithPosition;
         GameEvents.OnGetTileWidthPosition -= GetTileWidthPosition;
+        GameEvents.OnGetDictionary -= GetDictionary;
     }
 
     #endregion
@@ -56,7 +58,7 @@ public class GridManager : MonoBehaviour
                 tile.transform.SetParent(_tilesParent);
                 tile.name = $"Tile {x}_{y}";
 
-                SetTileInDictionary(posX, posY, tile);
+                SetTileInDictionary(x, y, tile);
                 SetTileColor(x, y, tile);
             }
         }
@@ -84,10 +86,10 @@ public class GridManager : MonoBehaviour
     private void SetCamSize() => _cam.GetComponent<Camera>().orthographicSize = (_width * TileSize) / 2;
 
 
-    public TileController GetTileWithPosition(Vector2 pos) => _tiles.TryGetValue(pos, out var tile) ? tile : null;
+    private TileController GetTileWithPosition(Vector2 pos) => _tiles.TryGetValue(pos, out var tile) ? tile : null;
 
-    public float GetTileWidthPosition()
-    {
-        return (_width - 1) * TileSize;
-    }
+    private float GetTileWidthPosition() => (_width - 1) * TileSize;
+
+
+    private Dictionary<Vector2,TileController> GetDictionary() => _tiles;
 }

@@ -14,52 +14,46 @@ public class Test : MonoBehaviour
     private float minX = 0;
 
     private bool isLocate = true;
-    
+
+    public List<TileController> tileList = new List<TileController>();
+
+    private BuildingData data;
+
     private void Start()
     {
         _startPos = transform.position;
-
-     
+        data = GetComponent<BuildingData>();
     }
 
 
     private void Update()
     {
-        //  RayTest();
 
 
         if (Input.GetMouseButtonDown(0))
         {
-            isLocate = false;
         }
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit) && hit.transform.tag == "Tile" && isLocate)
-            {
-                print("2");
 
-                var targetPos = new Vector3((hit.transform.position.x + _startPos.x), (hit.transform.position.y + _startPos.y), 0);
-                targetPos.y = Mathf.Clamp(targetPos.y, _startPos.y, 5.44f - _startPos.y);
-                targetPos.x = Mathf.Clamp(targetPos.x, _startPos.x, 5.44f - _startPos.x);
-                transform.position = Vector3.Lerp(transform.position, targetPos, 1f);
-
-            }
-        
     }
 
-    private void RayTest()
+    private void WalkableControlSystem(Vector3 startPosition, Vector2 size)
     {
-        //Will be delete then after test.
-        if (Input.GetMouseButtonDown(0))
+        var dataPosition = new Vector2(transform.position.x - startPosition.x, transform.position.y - startPosition.y);
+
+        var posX = Mathf.Round(dataPosition.x / 0.32f);
+        var posY = Mathf.Round(dataPosition.y / 0.32f);
+        var startPosY = posY;
+        for (int x = 0; x < size.x; x++)
         {
-            Vector2 pos = new Vector2(0f, 0f);
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            for (int y = 0; y < size.y; y++)
             {
-                print(hit.transform.gameObject.name);
-                print(hit.transform.position);
+                var tile = GameEvents.GetTileInDictionaryMethod(new Vector2(posX, posY));
+                tile.TileData.TileType = TileTypes.UnWalkable;
+                posY++;
             }
+            posY = startPosY;
+            posX++;
         }
     }
-
 
 }
