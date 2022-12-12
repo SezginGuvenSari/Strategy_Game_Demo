@@ -16,6 +16,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Transform _cam;
 
     [SerializeField] private Transform _tilesParent;
+
+    [SerializeField] private float _spawnDelay;
     #endregion
 
     #region References
@@ -43,27 +45,30 @@ public class GridManager : MonoBehaviour
 
     #endregion
 
-    private void Start() => GenerateGrid();
+    private void Start() => StartCoroutine(GenerateGrid());
 
-    private void GenerateGrid()
+
+    private IEnumerator GenerateGrid()
     {
+        SetCameraPosition();
+        SetCamSize();
         _tiles = new Dictionary<Vector2, TileController>();
-        for (int x = 0; x < _width; x++)
+        for (var x = 0; x < _width; x++)
         {
-            for (int y = 0; y < _height; y++)
+            var posX = x * TileSize;
+            for (var y = 0; y < _height; y++)
             {
-                float posX = x * TileSize;
-                float posY = y * TileSize;
+                var posY = y * TileSize;
                 var tile = Instantiate(_tilePrefab, new Vector3(posX, posY), Quaternion.identity);
                 tile.transform.SetParent(_tilesParent);
                 tile.name = $"Tile {x}_{y}";
 
                 SetTileInDictionary(x, y, tile);
                 SetTileColor(x, y, tile);
+                yield return new WaitForSeconds(_spawnDelay);
             }
         }
-        SetCameraPosition();
-        SetCamSize();
+        
     }
 
     private void SetTileInDictionary(float posX, float posY, TileController tile)

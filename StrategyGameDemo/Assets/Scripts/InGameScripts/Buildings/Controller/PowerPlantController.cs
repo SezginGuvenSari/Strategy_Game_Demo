@@ -28,10 +28,7 @@ public class PowerPlantController : BuildingLocator , IInteractable
     void Start() => base.Initialize();
 
 
-    void Update()
-    {
-        base.PlacementProcess(_powerPlantData.StartPosition, _powerPlantData);
-    }
+    void Update() => base.PlacementProcess(_powerPlantData.StartPosition, _powerPlantData);
 
 
     public void Interact()

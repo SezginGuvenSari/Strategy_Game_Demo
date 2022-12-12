@@ -1286,6 +1286,7 @@ MonoBehaviour:
   _tilePrefab: {fileID: 5983436259964751733, guid: 08a4384af682a1140ab9b965be8775e2, type: 3}
   _cam: {fileID: 519420032}
   _tilesParent: {fileID: 27646562}
+  _spawnDelay: 0.003
 --- !u!1 &1698136278
 GameObject:
   m_ObjectHideFlags: 0

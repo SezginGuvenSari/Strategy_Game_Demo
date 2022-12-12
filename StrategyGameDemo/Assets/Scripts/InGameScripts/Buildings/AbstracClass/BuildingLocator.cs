@@ -18,7 +18,7 @@ public abstract class BuildingLocator : MonoBehaviour
 
     private Vector3 _mousePos;
 
-    private bool _isBlock;
+    private bool _isBlock = true;
 
     #endregion
 
@@ -28,7 +28,7 @@ public abstract class BuildingLocator : MonoBehaviour
     public virtual void PlacementProcess(Vector3 startPos, BuildingData data)
     {
         var tile = GameEvents.GetCurrentTilesMethod(startPos, data.Size);
-
+       
         if (Input.GetMouseButtonDown(0) && !data.IsBuild && !_isBlock)
             BuildingPlacement(tile, data);
 

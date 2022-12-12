@@ -29,10 +29,7 @@ public class BarrackController : BuildingLocator , IInteractable
     void Start() => base.Initialize();
 
 
-    void Update()
-    {
-        base.PlacementProcess(_barrackData.StartPosition, _barrackData);
-    }
+    void Update() => base.PlacementProcess(_barrackData.StartPosition, _barrackData);
 
     public void Interact()
     {

@@ -45,27 +45,25 @@ public class ScrollContent : MonoBehaviour
 
     #region Properties
 
-    public float ItemSpacing { get { return _itemSpacing; } }
+    public float ItemSpacing => _itemSpacing;
 
-    public float HorizontalMargin { get { return _horizontalMargin; } }
+    public float HorizontalMargin => _horizontalMargin;
 
-    public float VerticalMargin { get { return _verticalMargin; } }
+    public float VerticalMargin => _verticalMargin;
 
-    public bool Horizontal { get { return _horizontal; } }
+    public bool Horizontal => _horizontal;
 
-    public bool Vertical { get { return _vertical; } }
+    public bool Vertical => _vertical;
 
-    public float Width { get { return _width; } }
+    public float Width => _width;
 
-    public float Height { get { return _height; } }
+    public float Height => _height;
 
-    public float ChildWidth { get { return _childWidth; } }
+    public float ChildWidth => _childWidth;
 
-    public float ChildHeight { get { return _childHeight; } }
-
+    public float ChildHeight => _childHeight;
 
     #endregion
-
 
     private void Start()
     {
@@ -101,10 +99,10 @@ public class ScrollContent : MonoBehaviour
     {
         float originY = 0 - (_height * 0.5f);
         float posOffset = _childHeight * 0.5f;
-        for (int i = 0; i < _rtChildren.Length; i++)
+        for (var i = 0; i < _rtChildren.Length; i++)
         {
             Vector2 childPos = _rtChildren[i].localPosition;
-            childPos.y = originY + posOffset + i * Screen.width * (_childHeight + _itemSpacing);
+            childPos.y = originY + posOffset + i * _childHeight * 1.5f + _itemSpacing;
             _rtChildren[i].localPosition = childPos;
         }
     }
