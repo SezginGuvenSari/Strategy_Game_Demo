@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierController : MonoBehaviour
+public class SoldierController : MonoBehaviour , IInteractable
 {
     #region References
 
@@ -33,5 +33,14 @@ public class SoldierController : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void Interact()
+    {
+        if (_soldierData.IsBuild)
+        {
+            GameEvents.SetBuildingDataMethod(_soldierData.ItemImage,_soldierData.ItemName);
+            print(gameObject.name);
+        }
     }
 }

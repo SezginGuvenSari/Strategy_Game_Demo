@@ -16,6 +16,10 @@ public abstract class BuildingLocator : MonoBehaviour
 
     private float _gridWidth;
 
+    private Vector3 _mousePos;
+
+    private bool _isBlock;
+
     #endregion
 
 
@@ -23,21 +27,16 @@ public abstract class BuildingLocator : MonoBehaviour
 
     public virtual void PlacementProcess(Vector3 startPos, BuildingData data)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (data.IsBuild == false)
-            {
-                data.IsBuild = true;
-                var tile = GameEvents.GetCurrentTilesMethod(startPos, data.Size);
-                BuildClicked(tile, data);
-                SetDataColorAlpha(data);
-            }
-        }
+        var tile = GameEvents.GetCurrentTilesMethod(startPos, data.Size);
+
+        if (Input.GetMouseButtonDown(0) && !data.IsBuild && !_isBlock)
+            BuildingPlacement(tile, data);
 
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        
         if (!Physics.Raycast(ray, out _hit) || !_hit.transform.CompareTag(TileTag) || data.IsBuild) return;
 
+        PlacementControl(tile, data);
         var targetPos = ClampTargetPos(startPos);
         transform.position = Vector3.Lerp(transform.position, targetPos, 1f);
     }
@@ -50,20 +49,37 @@ public abstract class BuildingLocator : MonoBehaviour
         return targetPos;
     }
 
-    public virtual void SetDataColorAlpha(BuildingData data)
+    private  void SetDataColorAlpha(BuildingData data)
     {
         var color = data.SpriteRenderer.color;
         color.a = Mathf.Lerp(color.a, 255f, 1f);
         data.SpriteRenderer.color = color;
     }
-    private void BuildClicked(List<TileController> tiles, BuildingData data)
+
+    private void BuildingPlacement(List<TileController> tiles, BuildingData data)
     {
         data.IsBuild = true;
         foreach (var tile in tiles)
         {
             tile.TileData.TileType = TileTypes.UnWalkable;
         }
+        data.SpriteRenderer.sortingOrder = 1;
         tiles.Clear();
+        SetDataColorAlpha(data);
+    }
 
+    private void PlacementControl(List<TileController> tiles, BuildingData data)
+    {
+        foreach (var tile in tiles)
+        {
+            if (data.IsBuild) continue;
+
+            if (tile.TileData.TileType != TileTypes.UnWalkable) continue;
+            _isBlock = true;
+            data.SpriteRenderer.color = Color.red;
+            return;
+        }
+        _isBlock = false;
+        data.SpriteRenderer.color = data.DefaultColor;
     }
 }

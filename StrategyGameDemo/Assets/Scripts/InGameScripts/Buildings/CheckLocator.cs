@@ -6,7 +6,7 @@ public class CheckLocator : MonoBehaviour
 {
     #region References
 
-    public List<TileController> _tileList;
+    private  List<TileController> _tileList;
 
     #endregion
 
@@ -38,16 +38,4 @@ public class CheckLocator : MonoBehaviour
         }
         return _tileList;
     }
-
-
-    private void SetTileTypes(TileController tile) => tile.TileData.TileType = TileTypes.UnWalkable;
-
-    private void SetDataColorAlpha(BuildingData data)
-    {
-        var color = data.SpriteRenderer.color;
-        color.a = Mathf.Lerp(color.a, 255f, 1f);
-        data.SpriteRenderer.color = color;
-    }
-
-
 }

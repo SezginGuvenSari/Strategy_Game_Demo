@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using TMPro;
 public class GameEvents : MonoSingleton<GameEvents>
 {
 
@@ -50,6 +52,29 @@ public class GameEvents : MonoSingleton<GameEvents>
     {
         return OnGetCurrentTiles?.Invoke(startPosition, size);
     }
+
+    #endregion
+
+
+    #region InformationView Events
+
+    public delegate void SetBuildingData(Sprite sprite, string name);
+    public static event SetBuildingData OnSetBuildingData;
+    public static void SetBuildingDataMethod(Sprite sprite, string name)
+    {
+        OnSetBuildingData?.Invoke(sprite, name);
+    }
+
+
+
+    public delegate void SetProductionData(Sprite sprite, string name);
+    public static event SetProductionData OnSetProductionData;
+    public static void SetProductionDataMethod(Sprite sprite, string name)
+    {
+        OnSetProductionData?.Invoke(sprite, name);
+    }
+
+   
 
     #endregion
 

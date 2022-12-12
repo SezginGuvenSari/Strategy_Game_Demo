@@ -23,6 +23,8 @@ public abstract class BuildingData : MonoBehaviour
 
     [SerializeField] private List<TileController> _currentTiles;
 
+    [SerializeField] private Color _defaultColor;
+
 
     #endregion
 
@@ -69,9 +71,14 @@ public abstract class BuildingData : MonoBehaviour
         set => _currentTiles = value;
     }
 
+    public Color DefaultColor
+    {
+        get => _defaultColor;
+        set => _defaultColor = value;
+    }
+
 
     #endregion
 
     private void Start() => _startPosition = transform.position;
-
 }

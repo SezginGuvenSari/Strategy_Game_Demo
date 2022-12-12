@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerPlantController : BuildingLocator
+public class PowerPlantController : BuildingLocator , IInteractable
 {
 
     #region References
@@ -25,10 +25,7 @@ public class PowerPlantController : BuildingLocator
 
     private void Awake() => _powerPlantData = GetComponent<PowerPlantData>();
 
-    void Start()
-    {
-        base.Initialize();
-    }
+    void Start() => base.Initialize();
 
 
     void Update()
@@ -36,5 +33,14 @@ public class PowerPlantController : BuildingLocator
         base.PlacementProcess(_powerPlantData.StartPosition, _powerPlantData);
     }
 
-    
+
+    public void Interact()
+    {
+        if (_powerPlantData.IsBuild)
+        {
+            GameEvents.SetBuildingDataMethod(_powerPlantData.ItemImage, _powerPlantData.ItemName);
+            print(gameObject.name);
+        }
+      
+    }
 }
