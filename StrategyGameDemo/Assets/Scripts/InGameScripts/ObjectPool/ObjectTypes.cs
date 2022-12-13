@@ -9,4 +9,8 @@ public enum ObjectTypes
   Barrack,
   Soldier,
   PowerPlant,
+  CastleWallUi,
+  CastleSmallWallUi,
+  CastleWall,
+  CastleSmallWall,
 }

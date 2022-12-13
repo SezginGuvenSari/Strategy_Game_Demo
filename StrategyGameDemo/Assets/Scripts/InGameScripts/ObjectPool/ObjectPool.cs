@@ -66,7 +66,6 @@ public class ObjectPool : MonoBehaviour
         return null;
     }
 
-
     private GameObject ChooseObject(int objectTypes)
     {
         var objectType = _pools[objectTypes].ObjectPrefab;
@@ -77,6 +76,10 @@ public class ObjectPool : MonoBehaviour
             (int)ObjectTypes.Barrack => Instantiate(objectType, _objectTransform),
             (int)ObjectTypes.Soldier => Instantiate(objectType, _objectTransform),
             (int)ObjectTypes.PowerPlant => Instantiate(objectType, _objectTransform),
+            (int)ObjectTypes.CastleWallUi => Instantiate(objectType, _uiTransform),
+            (int)ObjectTypes.CastleSmallWallUi => Instantiate(objectType, _uiTransform),
+            (int)ObjectTypes.CastleWall => Instantiate(objectType, _objectTransform),
+            (int)ObjectTypes.CastleSmallWall => Instantiate(objectType, _objectTransform),
             _ => null
         };
     }

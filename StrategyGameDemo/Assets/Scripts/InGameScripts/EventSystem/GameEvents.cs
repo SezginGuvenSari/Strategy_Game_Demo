@@ -18,7 +18,6 @@ public class GameEvents : MonoSingleton<GameEvents>
 
     #endregion
 
-
     #region GridEvents
 
     public delegate TileController GetTileInDictionaryWithCoordinates(Vector2 pos);

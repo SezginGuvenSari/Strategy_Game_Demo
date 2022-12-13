@@ -38,7 +38,7 @@ public class PathFinding : MonoBehaviour
                 break;
             foreach (var neighbor in GameEvents.GetNeighborMethod(curTile))
             {
-                int newCost = costToReachTile[curTile] + neighbor.TileData.Cost;
+                var newCost = costToReachTile[curTile] + neighbor.TileData.Cost;
                 if (costToReachTile.ContainsKey(neighbor) == false || newCost < costToReachTile[neighbor])
                 {
                     if (neighbor.TileData.TileType == TileTypes.Walkable)

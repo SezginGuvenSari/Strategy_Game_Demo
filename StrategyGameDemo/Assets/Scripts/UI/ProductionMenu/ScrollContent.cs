@@ -126,6 +126,8 @@ public class ScrollContent : MonoBehaviour
         {
             GameEvents.GetObjectsInPoolMethod(ObjectTypes.BarrackUi);
             GameEvents.GetObjectsInPoolMethod(ObjectTypes.PowerPlantUi);
+            GameEvents.GetObjectsInPoolMethod(ObjectTypes.CastleWallUi);
+            GameEvents.GetObjectsInPoolMethod(ObjectTypes.CastleSmallWallUi);
         }
     }
 }

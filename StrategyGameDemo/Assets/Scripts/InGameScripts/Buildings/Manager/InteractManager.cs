@@ -38,13 +38,11 @@ public class InteractManager : MonoBehaviour
 
             if (_hit.collider == null) return;
 
-            var barrack = _hit.collider.GetComponent<BarrackController>();
-            if (barrack != null)
+            var barrack = _hit.collider.GetComponent<BarrackData>();
+            if (barrack != null && barrack.IsBuild)
             {
                 GameEvents.GetSoldierMethod();
             }
         }
-
-
     }
 }
