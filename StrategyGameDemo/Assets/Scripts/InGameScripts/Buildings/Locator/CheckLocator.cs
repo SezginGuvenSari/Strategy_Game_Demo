@@ -29,7 +29,7 @@ public class CheckLocator : MonoBehaviour
         {
             for (int y = 0; y < size.y; y++)
             {
-                var tile = GameEvents.GetTileInDictionaryMethod(new Vector2(posX, posY));
+                var tile = GameEvents.GetTileInDictionaryWithCoordinatesMethod(new Vector2(posX, posY));
                 _tileList.Add(tile);
                 posY++;
             }

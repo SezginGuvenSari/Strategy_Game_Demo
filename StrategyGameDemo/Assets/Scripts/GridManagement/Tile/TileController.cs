@@ -23,7 +23,13 @@ public class TileController : MonoBehaviour
 
     #endregion
 
+    #region OnEnable && OnDisable
 
+    private void OnEnable() => GameEvents.OnGetTileUnderMouse += GetTileUnderMouse;
+
+    private void OnDisable() => GameEvents.OnGetTileUnderMouse -= GetTileUnderMouse;
+
+    #endregion
     public void Init(bool isState) => _tileData.Renderer.color = isState ? _tileData.BaseColor : _tileData.StateColor;
 
     private void Start()
@@ -31,12 +37,16 @@ public class TileController : MonoBehaviour
 
     }
 
-
     void OnMouseEnter() => IsActiveHighlight(true);
 
     void OnMouseExit() => IsActiveHighlight(false);
 
     private void IsActiveHighlight(bool on) => _tileData.HighLight.SetActive(on);
 
-
+    private TileController GetTileUnderMouse()
+    {
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var wasHit = Physics.Raycast(ray, out var hitInfo, int.MaxValue, LayerMask.GetMask("Tile"));
+        return wasHit ? hitInfo.transform.GetComponent<TileController>() : null;
+    }
 }

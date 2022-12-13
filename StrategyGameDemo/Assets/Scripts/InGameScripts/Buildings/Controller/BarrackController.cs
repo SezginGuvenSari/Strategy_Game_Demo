@@ -24,6 +24,13 @@ public class BarrackController : BuildingLocator, IInteractable
 
     #endregion
 
+    #region OnEnable && OnDisable
+
+    private void OnEnable() => GameEvents.OnGetSoldier += GetSoldier;
+    
+    private void OnDisable() => GameEvents.OnGetSoldier -= GetSoldier;
+
+    #endregion
 
     private void Awake() => _barrackData = GetComponent<BarrackData>();
 
@@ -37,16 +44,14 @@ public class BarrackController : BuildingLocator, IInteractable
         if (!_barrackData.IsBuild) return;
         GameEvents.SetBuildingDataMethod(_barrackData.ItemImage, _barrackData.ItemName);
         GameEvents.SetProductionDataMethod(_barrackData.ProductionImage, _barrackData.ProductionName);
-        GetSoldier();
     }
 
     private void GetSoldier()
     {
-        if (_soldierSpawned) return;
         var soldier = GameEvents.GetObjectsInPoolMethod(ObjectTypes.Soldier);
+        if(soldier==null) return;
         var soldierData = soldier.GetComponent<SoldierData>();
         soldierData.IsBuild = true;
-        _soldierSpawned = true;
         FindSuitableLocation(soldier.transform);
     }
 
@@ -57,7 +62,7 @@ public class BarrackController : BuildingLocator, IInteractable
             var grid = GameEvents.GetGridWidthMethod();
             var posX = Random.Range(0, grid.x);
             var posY = Random.Range(0, grid.y);
-            var tile = GameEvents.GetTileInDictionaryMethod(new Vector2(posX, posY));
+            var tile = GameEvents.GetTileInDictionaryWithCoordinatesMethod(new Vector2(posX, posY));
 
             if (tile.TileData.TileType != TileTypes.Walkable) continue;
 

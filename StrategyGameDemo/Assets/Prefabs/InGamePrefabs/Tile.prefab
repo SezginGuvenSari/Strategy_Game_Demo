@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5838407662100172469}
   - component: {fileID: 406651669863287405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4421581540934766925}
   - component: {fileID: 5983436259964751733}
   - component: {fileID: 8111424570313092077}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tile
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -180,11 +180,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa81d20089624a41b719a1dc038fc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 0.9339623, g: 0.885502, b: 0.885502, a: 1}
-  _stateColor: {r: 0.6509434, g: 0.623309, b: 0.623309, a: 1}
+  _baseColor: {r: 0.7137255, g: 0.8392157, b: 0.59607846, a: 1}
+  _stateColor: {r: 0.83137256, g: 0.93333334, b: 0.7372549, a: 1}
   _highlight: {fileID: 197247235861108755}
   _tileType: 0
   _renderer: {fileID: 5983436259964751723}
+  _coordinateX: 0
+  _coordinateY: 0
 --- !u!114 &5983436259964751733
 MonoBehaviour:
   m_ObjectHideFlags: 0

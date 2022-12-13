@@ -32,18 +32,20 @@ public class GridManager : MonoBehaviour
     #region OnEnable & OnDisable
     private void OnEnable()
     {
-        GameEvents.OnGetTileInDictionary += GetTileWithPosition;
+        GameEvents.OnGetTileInDictionaryWithCoordinates += GetTileWithCoordinates;
         GameEvents.OnGetTileWidthPosition += GetTileWidthPosition;
         GameEvents.OnGetDictionary += GetDictionary;
         GameEvents.OnGetGridWidth += GetGridWidth;
+        GameEvents.OnGetTileInDictionaryWithPosition += GetTileWithPosition;
     }
 
     private void OnDisable()
     {
-        GameEvents.OnGetTileInDictionary -= GetTileWithPosition;
+        GameEvents.OnGetTileInDictionaryWithCoordinates -= GetTileWithCoordinates;
         GameEvents.OnGetTileWidthPosition -= GetTileWidthPosition;
         GameEvents.OnGetDictionary -= GetDictionary;
         GameEvents.OnGetGridWidth -= GetGridWidth;
+        GameEvents.OnGetTileInDictionaryWithPosition -= GetTileWithPosition;
     }
 
     #endregion
@@ -63,36 +65,42 @@ public class GridManager : MonoBehaviour
                 var tile = Instantiate(_tilePrefab, new Vector3(posX, posY), Quaternion.identity);
                 tile.transform.SetParent(_tilesParent);
                 tile.name = $"Tile {x}_{y}";
+                var data = tile.TileData;
+                data.CoordinateX = x;
+                data.CoordinateY = y;
 
                 SetTileInDictionary(x, y, tile);
                 SetTileColor(x, y, tile);
                 yield return new WaitForSeconds(_spawnDelay);
             }
         }
-        
+        GameEvents.FindNeighborMethod(_width, _height, _tiles);
     }
-
     private void SetTileInDictionary(float posX, float posY, TileController tile)
     {
         _tiles[new Vector2(posX, posY)] = tile;
     }
-
     private void SetTileColor(int x, int y, TileController tile)
     {
         var isState = (x % 2 != y % 2);
         tile.Init(isState);
     }
-
     private void SetCameraPosition()
     {
         _cam.position = new Vector3((float)(_width * TileSize) / 2 - TileSize / 2,
             (float)(_height * TileSize) / 2 - TileSize / 2, -10f);
     }
-
     private void SetCamSize() => _cam.GetComponent<Camera>().orthographicSize = (_width * TileSize) / 2;
-    private TileController GetTileWithPosition(Vector2 pos) => _tiles.TryGetValue(pos, out var tile) ? tile : null;
-
+    private TileController GetTileWithCoordinates(Vector2 pos) => _tiles.TryGetValue(pos, out var tile) ? tile : null;
     private float GetTileWidthPosition() => (_width - 1) * TileSize;
-    private Vector2Int GetGridWidth() => new Vector2Int(_width,_height);
-    private Dictionary<Vector2,TileController> GetDictionary() => _tiles;
+    private Vector2Int GetGridWidth() => new Vector2Int(_width, _height);
+    private Dictionary<Vector2, TileController> GetDictionary() => _tiles;
+
+    private TileController GetTileWithPosition(Vector2 pos)
+    {
+        var posX = Mathf.Round(pos.x / TileSize);
+        var posY = Mathf.Round(pos.y / TileSize);
+        return _tiles[new Vector2(posX, posY)];
+    }
+
 }

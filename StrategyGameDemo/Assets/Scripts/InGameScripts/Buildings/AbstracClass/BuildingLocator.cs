@@ -28,12 +28,16 @@ public abstract class BuildingLocator : MonoBehaviour
     public virtual void PlacementProcess(Vector3 startPos, BuildingData data)
     {
         var tile = GameEvents.GetCurrentTilesMethod(startPos, data.Size);
-       
+
         if (Input.GetMouseButtonDown(0) && !data.IsBuild && !_isBlock)
             BuildingPlacement(tile, data);
 
+        if (Input.GetMouseButtonDown(1) && !data.IsBuild)
+        {
+            data.gameObject.SetActive(false);
+        }
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
+
         if (!Physics.Raycast(ray, out _hit) || !_hit.transform.CompareTag(TileTag) || data.IsBuild) return;
         PlacementControl(tile, data);
         var targetPos = ClampTargetPos(startPos);
@@ -48,7 +52,7 @@ public abstract class BuildingLocator : MonoBehaviour
         return targetPos;
     }
 
-    private  void SetDataColorAlpha(BuildingData data)
+    private void SetDataColorAlpha(BuildingData data)
     {
         var color = data.SpriteRenderer.color;
         color.a = Mathf.Lerp(color.a, 255f, 1f);
@@ -81,4 +85,5 @@ public abstract class BuildingLocator : MonoBehaviour
         _isBlock = false;
         data.SpriteRenderer.color = data.DefaultColor;
     }
+
 }

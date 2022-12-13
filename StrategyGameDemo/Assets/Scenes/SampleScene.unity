@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1764706, g: 0.17254902, b: 0.14901961, a: 0.392}
+  m_Color: {r: 0.7647059, g: 0.94509804, b: 0.6, a: 0.6039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1764706, g: 0.17254902, b: 0.14901961, a: 0.392}
+  m_Color: {r: 0.7647059, g: 0.94509804, b: 0.6, a: 0.6039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93333334, g: 0.38039216, b: 0.09411765, a: 1}
+  m_Color: {r: 0.9647059, g: 0.5568628, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -542,7 +542,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.76006514, g: 0.9150943, b: 0.64315593, a: 0}
+  m_BackGroundColor: {r: 0.7647059, g: 0.94509804, b: 0.6, a: 0.6666667}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -629,15 +629,15 @@ MonoBehaviour:
     ObjectTypes: 1
   - Pool: []
     ObjectPrefab: {fileID: 607360830817920002, guid: 1ccb959f30e67884c85043ddd97515f7, type: 3}
-    PoolSize: 10
+    PoolSize: 40
     ObjectTypes: 2
   - Pool: []
     ObjectPrefab: {fileID: 3831089129789394507, guid: bf488ce789122524a984449bc3e8266b, type: 3}
-    PoolSize: 10
+    PoolSize: 40
     ObjectTypes: 3
   - Pool: []
     ObjectPrefab: {fileID: 2621885996886856155, guid: af55e390a84393145bc88cb7df4406f1, type: 3}
-    PoolSize: 10
+    PoolSize: 40
     ObjectTypes: 4
   _uiTransform: {fileID: 224623050944341984}
   _objectTransform: {fileID: 683617480}
@@ -1238,6 +1238,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -625}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1565083106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1565083108}
+  - component: {fileID: 1565083107}
+  m_Layer: 0
+  m_Name: A*Star
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1565083107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565083106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051a60fa19a72614fb6f2fcb1af4436b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1565083108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565083106}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1577101197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1577101198}
   - component: {fileID: 1577101199}
+  - component: {fileID: 1577101200}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -1286,7 +1330,19 @@ MonoBehaviour:
   _tilePrefab: {fileID: 5983436259964751733, guid: 08a4384af682a1140ab9b965be8775e2, type: 3}
   _cam: {fileID: 519420032}
   _tilesParent: {fileID: 27646562}
-  _spawnDelay: 0.003
+  _spawnDelay: 0.002
+--- !u!114 &1577101200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577101197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7beb1be25f0ead41af3b57d0162eee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1698136278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9339623, g: 0.38032448, b: 0.09251513, a: 1}
+  m_Color: {r: 0.9647059, g: 0.5568628, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
