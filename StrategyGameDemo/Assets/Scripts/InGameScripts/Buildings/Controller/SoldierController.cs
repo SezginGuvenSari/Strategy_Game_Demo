@@ -30,17 +30,10 @@ public class SoldierController : MonoBehaviour , IInteractable
 
     private void Initialize() => _soldierData = GetComponent<SoldierData>();
 
-    void Update()
-    {
-
-    }
-
+    
     public void Interact()
     {
-        if (_soldierData.IsBuild)
-        {
-            GameEvents.SetBuildingDataMethod(_soldierData.ItemImage,_soldierData.ItemName);
-            print(gameObject.name);
-        }
+        if (!_soldierData.IsBuild) return;
+        GameEvents.SetBuildingDataMethod(_soldierData.ItemImage,_soldierData.ItemName);
     }
 }

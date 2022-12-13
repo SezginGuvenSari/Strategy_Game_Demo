@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -34,6 +35,7 @@ public class GridManager : MonoBehaviour
         GameEvents.OnGetTileInDictionary += GetTileWithPosition;
         GameEvents.OnGetTileWidthPosition += GetTileWidthPosition;
         GameEvents.OnGetDictionary += GetDictionary;
+        GameEvents.OnGetGridWidth += GetGridWidth;
     }
 
     private void OnDisable()
@@ -41,13 +43,12 @@ public class GridManager : MonoBehaviour
         GameEvents.OnGetTileInDictionary -= GetTileWithPosition;
         GameEvents.OnGetTileWidthPosition -= GetTileWidthPosition;
         GameEvents.OnGetDictionary -= GetDictionary;
+        GameEvents.OnGetGridWidth -= GetGridWidth;
     }
 
     #endregion
 
     private void Start() => StartCoroutine(GenerateGrid());
-
-
     private IEnumerator GenerateGrid()
     {
         SetCameraPosition();
@@ -89,12 +90,9 @@ public class GridManager : MonoBehaviour
     }
 
     private void SetCamSize() => _cam.GetComponent<Camera>().orthographicSize = (_width * TileSize) / 2;
-
-
     private TileController GetTileWithPosition(Vector2 pos) => _tiles.TryGetValue(pos, out var tile) ? tile : null;
 
     private float GetTileWidthPosition() => (_width - 1) * TileSize;
-
-
+    private Vector2Int GetGridWidth() => new Vector2Int(_width,_height);
     private Dictionary<Vector2,TileController> GetDictionary() => _tiles;
 }

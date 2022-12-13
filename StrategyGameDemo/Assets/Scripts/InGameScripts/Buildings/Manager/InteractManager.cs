@@ -28,8 +28,9 @@ public class InteractManager : MonoBehaviour
         _hit = Physics2D.Raycast(ray, Vector2.zero);
 
         if (_hit.collider == null) return;
-
+      
         IInteractable interact = _hit.collider.GetComponent<IInteractable>();
         interact?.Interact();
+
     }
 }

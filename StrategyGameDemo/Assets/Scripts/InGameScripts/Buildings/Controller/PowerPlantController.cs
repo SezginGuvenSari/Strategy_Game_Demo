@@ -33,11 +33,7 @@ public class PowerPlantController : BuildingLocator , IInteractable
 
     public void Interact()
     {
-        if (_powerPlantData.IsBuild)
-        {
-            GameEvents.SetBuildingDataMethod(_powerPlantData.ItemImage, _powerPlantData.ItemName);
-            print(gameObject.name);
-        }
-      
+        if (!_powerPlantData.IsBuild) return;
+        GameEvents.SetBuildingDataMethod(_powerPlantData.ItemImage, _powerPlantData.ItemName);
     }
 }

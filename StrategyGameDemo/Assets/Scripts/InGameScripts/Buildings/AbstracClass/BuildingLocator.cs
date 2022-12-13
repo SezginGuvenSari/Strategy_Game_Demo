@@ -35,7 +35,6 @@ public abstract class BuildingLocator : MonoBehaviour
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
         if (!Physics.Raycast(ray, out _hit) || !_hit.transform.CompareTag(TileTag) || data.IsBuild) return;
-
         PlacementControl(tile, data);
         var targetPos = ClampTargetPos(startPos);
         transform.position = Vector3.Lerp(transform.position, targetPos, 1f);

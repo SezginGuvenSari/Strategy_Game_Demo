@@ -9,11 +9,11 @@ public class GameEvents : MonoSingleton<GameEvents>
 
     #region PoolEvents
 
-    public delegate void GetObjectsInPool(ObjectTypes objectTypes);
+    public delegate GameObject GetObjectsInPool(ObjectTypes objectTypes);
     public static event GetObjectsInPool OnGetObjectsInPool;
-    public static void GetObjectsInPoolMethod(ObjectTypes objectTypes)
+    public static GameObject GetObjectsInPoolMethod(ObjectTypes objectTypes)
     {
-        OnGetObjectsInPool?.Invoke(objectTypes);
+        return OnGetObjectsInPool?.Invoke(objectTypes);
     }
 
     #endregion
@@ -28,6 +28,7 @@ public class GameEvents : MonoSingleton<GameEvents>
         return OnGetTileInDictionary?.Invoke(pos);
     }
 
+    //**************************************************************//
     public delegate float GetTileWidthPosition();
     public static event GetTileWidthPosition OnGetTileWidthPosition;
     public static float? GetTileWidthPositionMethod()
@@ -35,6 +36,7 @@ public class GameEvents : MonoSingleton<GameEvents>
         return OnGetTileWidthPosition?.Invoke();
     }
 
+    //**************************************************************//
     public delegate Dictionary<Vector2, TileController> GetDictionary();
     public static event GetDictionary OnGetDictionary;
     public static Dictionary<Vector2, TileController> GetDictionaryMethod()
@@ -42,7 +44,18 @@ public class GameEvents : MonoSingleton<GameEvents>
         return OnGetDictionary?.Invoke();
     }
 
+    //**************************************************************//
+    public delegate Vector2Int GetGridWidth();
+    public static event GetGridWidth OnGetGridWidth;
+    public static Vector2Int GetGridWidthMethod()
+    {
+        return (Vector2Int)OnGetGridWidth?.Invoke();
+    }
+
+
+
     #endregion
+
 
     #region LocatorEvents
 
@@ -65,8 +78,7 @@ public class GameEvents : MonoSingleton<GameEvents>
         OnSetBuildingData?.Invoke(sprite, name);
     }
 
-
-
+    //**************************************************************//
     public delegate void SetProductionData(Sprite sprite, string name);
     public static event SetProductionData OnSetProductionData;
     public static void SetProductionDataMethod(Sprite sprite, string name)
@@ -74,7 +86,7 @@ public class GameEvents : MonoSingleton<GameEvents>
         OnSetProductionData?.Invoke(sprite, name);
     }
 
-   
+
 
     #endregion
 

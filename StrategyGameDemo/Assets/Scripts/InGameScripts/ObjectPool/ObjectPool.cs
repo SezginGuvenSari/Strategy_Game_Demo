@@ -55,15 +55,17 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    private void GetPooledObject(ObjectTypes objectType)
+    private GameObject GetPooledObject(ObjectTypes objectType)
     {
         foreach (var poolIndex in _pools[(int)objectType].Pool.Where(poolIndex => poolIndex.activeInHierarchy == false))
         {
             poolIndex.SetActive(true);
-            return;
+            return poolIndex;
 
         }
+        return null;
     }
+
 
     private GameObject ChooseObject(int objectTypes)
     {
