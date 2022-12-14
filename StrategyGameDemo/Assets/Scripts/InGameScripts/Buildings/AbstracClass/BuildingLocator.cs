@@ -34,7 +34,9 @@ public abstract class BuildingLocator : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && !data.IsBuild)
         {
+            
             data.gameObject.SetActive(false);
+            ItemManager.Instance.IsSpawned = false;
         }
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -62,6 +64,7 @@ public abstract class BuildingLocator : MonoBehaviour
     private void BuildingPlacement(List<TileController> tiles, BuildingData data)
     {
         data.IsBuild = true;
+        ItemManager.Instance.IsSpawned = !data.IsBuild;
         foreach (var tile in tiles)
         {
             tile.TileData.TileType = TileTypes.UnWalkable;

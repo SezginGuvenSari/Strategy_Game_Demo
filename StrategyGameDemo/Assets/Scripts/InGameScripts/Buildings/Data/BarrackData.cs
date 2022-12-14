@@ -12,6 +12,8 @@ public class BarrackData : BuildingData
 
     [SerializeField] private Sprite _productionImage;
 
+    [SerializeField] private bool _isLocate = false;
+
     #endregion
 
     #region Properties
@@ -28,7 +30,11 @@ public class BarrackData : BuildingData
         set => _productionImage = value;
     }
 
-
+    public bool IsLocate
+    {
+        get => _isLocate;
+        set => _isLocate = value;
+    }
     #endregion
 
   

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class BarrackController : BuildingLocator, IInteractable,ISpawner
+public class BarrackController : BuildingLocator, IInteractable, ISpawner
 {
 
     #region References
@@ -67,7 +68,18 @@ public class BarrackController : BuildingLocator, IInteractable,ISpawner
 
     public void Spawner()
     {
-        if(!_barrackData.IsBuild) return;
+        CanSoldierPlacement();
+        if (!_barrackData.IsBuild || !_barrackData.IsLocate) return;
         GetSoldier();
+    }
+
+    private void CanSoldierPlacement()
+    {
+        var tiles = GameEvents.GetDictionaryMethod();
+        foreach (var tile in tiles)
+        {
+            if (tile.Value.TileData.TileType != TileTypes.Walkable) continue;
+            _barrackData.IsLocate = true;
+        }
     }
 }

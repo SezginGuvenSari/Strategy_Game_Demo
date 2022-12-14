@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ItemController : MonoBehaviour
@@ -10,6 +11,18 @@ public class ItemController : MonoBehaviour
 
     #endregion
 
-    
-    public void SpawnObject() => GameEvents.GetObjectsInPoolMethod(_objectType);
+    #region References
+
+    private ItemManager _itemManager;
+
+    #endregion
+
+    private void Awake() => _itemManager = GetComponentInParent<ItemManager>();
+    public void SpawnObject()
+    {
+        if (_itemManager.IsSpawned) return;
+
+        _itemManager.IsSpawned = true;
+        GameEvents.GetObjectsInPoolMethod(_objectType);
+    }
 }

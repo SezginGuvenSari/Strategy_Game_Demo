@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -532,6 +533,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0579a38f549b2684fb4153c9cbe85216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1356,9 +1369,8 @@ MonoBehaviour:
   _width: 17
   _height: 17
   _tilePrefab: {fileID: 5983436259964751733, guid: 08a4384af682a1140ab9b965be8775e2, type: 3}
-  _cam: {fileID: 519420032}
   _tilesParent: {fileID: 27646562}
-  _spawnDelay: 0.002
+  _spawnDelay: 0.01
 --- !u!1 &1628520472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +1793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224623050944341984}
   - component: {fileID: 5387971220808175728}
+  - component: {fileID: 1801227237727589}
   m_Layer: 5
   m_Name: ScrollContent
   m_TagString: Untagged
@@ -1788,6 +1801,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1801227237727589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801227237727588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d969495ab62c45a4aa5f1b9f9a4e122f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isSpawned: 0
 --- !u!1 &1839538253427204
 GameObject:
   m_ObjectHideFlags: 0

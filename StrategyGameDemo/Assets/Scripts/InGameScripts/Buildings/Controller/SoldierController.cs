@@ -36,14 +36,20 @@ public class SoldierController : MonoBehaviour, IInteractable
 
         if (_soldierData.StartTile == null || _soldierData.EndTile == null) return;
 
-        _soldierData.EndTile.TileData.TileType = TileTypes.UnWalkable;
+
         _soldierData.StartTile.TileData.TileType = TileTypes.Walkable;
         var path = GameEvents.GetPathMethod(_soldierData.StartTile, _soldierData.EndTile);
+
         if (path != null)
         {
             StartCoroutine(SoldierMoveAlongPath(path));
+            _soldierData.EndTile.TileData.TileType = TileTypes.UnWalkable;
         }
-      
+        else
+        {
+            _soldierData.StartTile.TileData.TileType = TileTypes.UnWalkable;
+        }
+       
     }
 
     private IEnumerator SoldierMoveAlongPath(Queue<TileController> path)

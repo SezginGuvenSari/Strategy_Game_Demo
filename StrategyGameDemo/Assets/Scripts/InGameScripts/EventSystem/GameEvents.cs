@@ -137,6 +137,15 @@ public class GameEvents : MonoSingleton<GameEvents>
 
     #endregion
 
+    #region CameraEvents
 
+    public delegate void GetCameraSettings(int width , int height,float tileSize);
+    public static event GetCameraSettings OnGetCameraSettings;
+    public static void GetCameraSettingsMethod(int width, int height, float tileSize)
+    {
+        OnGetCameraSettings?.Invoke(width,height,tileSize);
+    }
+
+    #endregion
 
 }
