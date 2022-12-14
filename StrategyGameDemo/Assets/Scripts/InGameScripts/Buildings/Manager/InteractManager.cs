@@ -38,11 +38,18 @@ public class InteractManager : MonoBehaviour
 
             if (_hit.collider == null) return;
 
-            var barrack = _hit.collider.GetComponent<BarrackData>();
-            if (barrack != null && barrack.IsBuild)
-            {
-                GameEvents.GetSoldierMethod();
-            }
+           ISpawner interact = _hit.collider.GetComponent<ISpawner>();
+            interact?.Spawner();
+        }
+
+        QuitGame();
+    }
+
+    private void QuitGame()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 }

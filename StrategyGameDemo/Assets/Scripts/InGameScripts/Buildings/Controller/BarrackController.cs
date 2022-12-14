@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrackController : BuildingLocator, IInteractable
+public class BarrackController : BuildingLocator, IInteractable,ISpawner
 {
 
     #region References
 
     private BarrackData _barrackData;
-
-    private bool _soldierSpawned = false;
 
     #endregion
 
@@ -19,16 +17,11 @@ public class BarrackController : BuildingLocator, IInteractable
     #endregion
 
     #region Properties
-
-
-
-    #endregion
-
-    #region OnEnable && OnDisable
-
-    private void OnEnable() => GameEvents.OnGetSoldier += GetSoldier;
-    
-    private void OnDisable() => GameEvents.OnGetSoldier -= GetSoldier;
+    public BarrackData BarrackData
+    {
+        get => _barrackData;
+        set => _barrackData = value;
+    }
 
     #endregion
 
@@ -49,7 +42,7 @@ public class BarrackController : BuildingLocator, IInteractable
     private void GetSoldier()
     {
         var soldier = GameEvents.GetObjectsInPoolMethod(ObjectTypes.Soldier);
-        if(soldier==null) return;
+        if (soldier == null) return;
         var soldierData = soldier.GetComponent<SoldierData>();
         soldierData.IsBuild = true;
         FindSuitableLocation(soldier.transform);
@@ -70,5 +63,11 @@ public class BarrackController : BuildingLocator, IInteractable
             soldier.position = tile.transform.position;
             break;
         }
+    }
+
+    public void Spawner()
+    {
+        if(!_barrackData.IsBuild) return;
+        GetSoldier();
     }
 }

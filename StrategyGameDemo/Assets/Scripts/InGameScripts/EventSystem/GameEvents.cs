@@ -72,15 +72,6 @@ public class GameEvents : MonoSingleton<GameEvents>
         return OnGetCurrentTiles?.Invoke(startPosition, size);
     }
 
-    //**************************************************************//
-
-    public delegate void GetSoldier();
-    public static event GetSoldier OnGetSoldier;
-    public static void GetSoldierMethod()
-    {
-        OnGetSoldier?.Invoke();
-    }
-
     #endregion
 
 

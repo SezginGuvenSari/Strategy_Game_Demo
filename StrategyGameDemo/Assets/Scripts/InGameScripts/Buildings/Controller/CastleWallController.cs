@@ -28,4 +28,5 @@ public class CastleWallController : BuildingLocator , IInteractable
         if(!_castleWallData.IsBuild) return;
         GameEvents.SetBuildingDataMethod(_castleWallData.ItemImage, _castleWallData.ItemName);
     }
+
 }
