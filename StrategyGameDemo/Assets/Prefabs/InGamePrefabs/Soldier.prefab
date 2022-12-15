@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 443522005886526473}
   - component: {fileID: 2727510501088290249}
   - component: {fileID: 2647285538888985893}
+  - component: {fileID: 2217839114635591786}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 14235127b80712645a6df3ba7a380640, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1292227612999120131
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemName: Soldier
-  _itemImage: {fileID: 21300000, guid: 14235127b80712645a6df3ba7a380640, type: 3}
+  _itemImage: {fileID: 0}
   _isBuild: 0
   _startPosition: {x: 0, y: 0, z: 0}
   _spriteRenderer: {fileID: 0}
@@ -159,3 +160,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &2217839114635591786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831089129789394507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4a16434f47ae141afe928465af2b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteAtlas: {fileID: 4343727234628468602, guid: 8bfc16c523e3e7d41907c7e7bc5f75c8, type: 2}
+  _spriteType: 4
+  _renderType: 0

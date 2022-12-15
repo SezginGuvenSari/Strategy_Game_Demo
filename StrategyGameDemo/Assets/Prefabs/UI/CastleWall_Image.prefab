@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 342860183343149571}
   - component: {fileID: 342860183343149568}
   - component: {fileID: 342860183343149569}
+  - component: {fileID: 3672741200182364784}
   m_Layer: 5
   m_Name: CastleWall_Image
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1565d3efa0c383c46995e0987df4dac6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -146,3 +147,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectType: 7
+--- !u!114 &3672741200182364784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342860183343149573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4a16434f47ae141afe928465af2b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteAtlas: {fileID: 4343727234628468602, guid: 8bfc16c523e3e7d41907c7e7bc5f75c8, type: 2}
+  _spriteType: 1
+  _renderType: 1

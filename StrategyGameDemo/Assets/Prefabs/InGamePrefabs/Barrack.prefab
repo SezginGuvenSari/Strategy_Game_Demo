@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6438877423470834643}
   - component: {fileID: 5793036105031375148}
   - component: {fileID: 8307734841849549667}
+  - component: {fileID: 4397112009643093805}
   m_Layer: 0
   m_Name: Barrack
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b6d2af3b10651754ea3ca9e090fc6882, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &3294900673945867674
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemName: Barrack
-  _itemImage: {fileID: 21300000, guid: b6d2af3b10651754ea3ca9e090fc6882, type: 3}
+  _itemImage: {fileID: 0}
   _isBuild: 0
   _startPosition: {x: 0, y: 0, z: 0}
   _spriteRenderer: {fileID: 607360830817920000}
@@ -108,6 +109,7 @@ MonoBehaviour:
   _defaultColor: {r: 1, g: 1, b: 1, a: 0.39215687}
   _productionName: Soldier
   _productionImage: {fileID: 21300000, guid: 14235127b80712645a6df3ba7a380640, type: 3}
+  _isLocate: 0
 --- !u!114 &6438877423470834643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,3 +160,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &4397112009643093805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607360830817920002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4a16434f47ae141afe928465af2b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteAtlas: {fileID: 4343727234628468602, guid: 8bfc16c523e3e7d41907c7e7bc5f75c8, type: 2}
+  _spriteType: 0
+  _renderType: 0

@@ -162,7 +162,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -187,6 +187,7 @@ MonoBehaviour:
   _renderer: {fileID: 5983436259964751723}
   _coordinateX: 0
   _coordinateY: 0
+  _cost: 1
 --- !u!114 &5983436259964751733
 MonoBehaviour:
   m_ObjectHideFlags: 0
