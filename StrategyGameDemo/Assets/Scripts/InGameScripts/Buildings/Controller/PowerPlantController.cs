@@ -7,7 +7,7 @@ public class PowerPlantController : BuildingLocator , IInteractable
 
     #region References
 
-    private PowerPlantData _powerPlantData;
+    private BuildingData _powerPlantData;
 
     #endregion
 
@@ -23,7 +23,7 @@ public class PowerPlantController : BuildingLocator , IInteractable
     #endregion
 
 
-    private void Awake() => _powerPlantData = GetComponent<PowerPlantData>();
+    private void Awake() => _powerPlantData = GetComponent<BuildingData>();
 
     void Start() => base.Initialize();
 

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2621885996886856152}
   - component: {fileID: 2621885996886856153}
-  - component: {fileID: 1092331785159887502}
   - component: {fileID: 6898822580908863371}
   - component: {fileID: 7487586204323871783}
   - component: {fileID: 1699779092695750501}
   - component: {fileID: 2976810330923893653}
+  - component: {fileID: 2823014630987426812}
   m_Layer: 0
   m_Name: Power_Plant
   m_TagString: Untagged
@@ -87,26 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1092331785159887502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2621885996886856155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b3744e316d2e264cb00a4a306402694, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemName: PowerPlant
-  _itemImage: {fileID: 0}
-  _isBuild: 0
-  _startPosition: {x: 0, y: 0, z: 0}
-  _spriteRenderer: {fileID: 2621885996886856153}
-  _size: {x: 2, y: 3}
-  _currentTiles: []
-  _defaultColor: {r: 1, g: 1, b: 1, a: 0.39215687}
 --- !u!114 &6898822580908863371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,3 +152,23 @@ MonoBehaviour:
   _spriteAtlas: {fileID: 4343727234628468602, guid: 8bfc16c523e3e7d41907c7e7bc5f75c8, type: 2}
   _spriteType: 3
   _renderType: 0
+--- !u!114 &2823014630987426812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2621885996886856155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346bae73dd254b44e8722fa085bd40af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemName: PowerPlant
+  _itemImage: {fileID: 0}
+  _isBuild: 0
+  _startPosition: {x: 0, y: 0, z: 0}
+  _spriteRenderer: {fileID: 2621885996886856153}
+  _size: {x: 2, y: 3}
+  _currentTiles: []
+  _defaultColor: {r: 1, g: 1, b: 1, a: 0.39215687}

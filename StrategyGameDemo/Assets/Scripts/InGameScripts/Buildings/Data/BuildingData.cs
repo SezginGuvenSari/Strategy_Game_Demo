@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public abstract class BuildingData : MonoBehaviour
+public  class BuildingData : MonoBehaviour
 {
 
     #region References

@@ -7,7 +7,7 @@ public class CastleWallController : BuildingLocator , IInteractable
 
     #region References
 
-    private CastleWallData _castleWallData;
+    private BuildingData _castleWallData;
 
     #endregion
 
@@ -17,7 +17,7 @@ public class CastleWallController : BuildingLocator , IInteractable
     #endregion
 
 
-    private void Awake() => _castleWallData = GetComponent<CastleWallData>();
+    private void Awake() => _castleWallData = GetComponent<BuildingData>();
 
     void Start() => base.Initialize();
 
